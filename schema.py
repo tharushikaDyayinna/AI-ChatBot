@@ -1,4 +1,4 @@
-{
+form_structure = {
     "formData": {
         "entityType": "Department",
         "formCategory": "FF",
@@ -156,4 +156,5 @@
             "decimals": "2"
         }
     ]
+
 }
