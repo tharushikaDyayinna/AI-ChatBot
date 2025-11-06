@@ -2,10 +2,10 @@ import streamlit as st
 from llm_api import generate_query
 
 # --- Streamlit page setup ---
-st.set_page_config(page_title="AI Query Chatbot", page_icon="🤖")
-st.title("💬 AI Query Chatbot (Gemini API + JSON Schema)")
+st.set_page_config(page_title="Needlu Chatbot", page_icon="🤖")
+st.title("Needlu Chatbot")
 
-st.write("Ask questions about your system based on the JSON structure, and the chatbot will generate queries or expressions.")
+st.write("Ask questions.")
 
 # --- Initialize chat history ---
 if "messages" not in st.session_state:
@@ -34,3 +34,4 @@ if user_input := st.chat_input("Ask your question here..."):
                 error_msg = f"⚠️ Error: {str(e)}"
                 st.error(error_msg)
                 st.session_state.messages.append({"role": "assistant", "content": error_msg})
+
