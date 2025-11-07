@@ -39,6 +39,29 @@ form_structure = {
             "start_with": "1"
         },
         {
+    "data_name": "PurchaseDate",
+    "data_type": "date",
+    "sorting_value": "6",
+    "identifier": 0,
+    "options_from": "",
+    "fetch_function": "",
+    "calculation": "",
+    "defaultVal": "",
+    "features": "",
+    "inherit": 0,
+    "attributes": "required",
+    "entityMethod": "",
+    "entityOrLevel": "",
+    "mapping": [],
+    "keyMember": 0,
+    "sumClass": "",
+    "data_info": "",
+    "help_text": "Date of purchase",
+    "sum_func": "",
+    "countIf": "",
+    "decimals": ""
+}  ,
+        {
             "data_name": "Vendor",
             "data_type": "options",
             "sorting_value": "2",
@@ -158,3 +181,4 @@ form_structure = {
     ]
 
 }
+
