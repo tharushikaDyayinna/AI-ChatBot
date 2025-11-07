@@ -1,29 +1,22 @@
+
 import google.generativeai as genai
-import json
 from schema import form_structure
 
-# Configure Gemini API
+# ✅ Configure Gemini API key directly
 genai.configure(api_key="AIzaSyBte64NJgcH-8prMF20_8avNtiPKaew1Vk")
 
-# Initialize Gemini model
-model = genai.GenerativeModel("gemini-2.5-flash-preview-09-2025")
+def generate_query(user_prompt):
+    model = genai.GenerativeModel("gemini-pro")
 
-def generate_query(user_question: str) -> str:
-    json_schema = json.dumps(form_structure, indent=2)
+    schema_context = f"""
+    You are an SQL expert. Based on this table schema:
+    Table: {form_structure['table_name']}
+    Columns: {', '.join(form_structure['fields'].keys())}
 
-    prompt = f"""
-    You are an intelligent system that generates structured queries or expressions.
-    Below is a JSON object that defines a form's data structure.
-
-    JSON Schema:
-    {json_schema}
-
-    User question: "{user_question}"
-
-    Generate a valid query, calculation expression, or formula
-    using only the field names in the schema.
-    Respond with the query only (no explanation).
+    Generate a valid SQL query (MySQL syntax) for the following question:
+    {user_prompt}
     """
 
-    response = model.generate_content(prompt)
+    response = model.generate_content(schema_context)
     return response.text.strip()
+
