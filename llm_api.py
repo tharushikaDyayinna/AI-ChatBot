@@ -1,23 +1,24 @@
-
 import google.generativeai as genai
 from schema import form_structure
 
 genai.configure(api_key="AIzaSyBte64NJgcH-8prMF20_8avNtiPKaew1Vk")
 
 def generate_query(user_prompt):
-    model = genai.GenerativeModel("gemini-2.5-pro")
+    model = genai.GenerativeModel("gemini-2.5-pro")  # ✅ use valid Gemini model name
 
-    # extract info from your JSON-based schema
     table_name = form_structure["formData"]["formName"]
     field_names = [f["data_name"] for f in form_structure["fieldsData"]]
 
     schema_context = f"""
-    You are an SQL expert. Based on this table schema:
+    You are an SQL generator. 
+    Based on this table:
     Table: {table_name}
     Columns: {', '.join(field_names)}
 
-    Generate a valid SQL query (MySQL syntax) for the following question:
-    {user_prompt}
+    Question: {user_prompt}
+
+    Return ONLY the SQL query. 
+    No explanations, no text, no formatting, only SQL syntax.
     """
 
     response = model.generate_content(schema_context)
