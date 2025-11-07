@@ -4,7 +4,7 @@ from schema import form_structure
 genai.configure(api_key="AIzaSyBte64NJgcH-8prMF20_8avNtiPKaew1Vk")
 
 def generate_query(user_prompt):
-    model = genai.GenerativeModel("gemini-2.5-pro")  # ✅ use valid Gemini model name
+    model = genai.GenerativeModel("gemini-2.5-pro")  
 
     table_name = form_structure["formData"]["formName"]
     field_names = [f["data_name"] for f in form_structure["fieldsData"]]
@@ -23,5 +23,6 @@ def generate_query(user_prompt):
 
     response = model.generate_content(schema_context)
     return response.text.strip()
+
 
 
